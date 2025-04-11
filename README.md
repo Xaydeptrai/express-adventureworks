@@ -36,7 +36,7 @@ localhost,1535 -- (eu-db)
 localhost,1536 -- (na-db)
 ```
   Login 
-  - Authentication: SQL Server Authenticatio
+  - Authentication: SQL Server Authentication
   - Login: sa
   - Password: Password123@
 
