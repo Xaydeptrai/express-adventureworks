@@ -1,7 +1,7 @@
 module.exports = {
   user: process.env.EU_DB_USER || "sa",
   password: process.env.EU_DB_PASSWORD || "Password123@",
-  server: process.env.EU_DB_IP || "192.168.1.5",
+  server: process.env.EU_DB_IP || "localhost",
   database: "SalesEU",
   options: {
     encrypt: false,

@@ -1,7 +1,7 @@
 module.exports = {
   user: process.env.MASTER_DB_USER || "sa",
   password: process.env.MASTER_DB_PASSWORD || "Password123@",
-  server: process.env.MASTER_DB_IP || "192.168.1.5",
+  server: process.env.MASTER_DB_IP || "localhost",
   database: "AdventureWorks2022",
   options: {
     encrypt: false,

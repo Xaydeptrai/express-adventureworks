@@ -1,7 +1,7 @@
 module.exports = {
   user: process.env.NA_DB_USER || "sa",
   password: process.env.NA_DB_PASSWORD || "Password123@",
-  server: process.env.NA_DB_IP || "192.168.1.5",
+  server: process.env.NA_DB_IP || "localhost",
   database: "SalesNA",
   options: {
     encrypt: false,
