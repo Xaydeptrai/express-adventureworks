@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  sqlserver-master:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-master
+    ports:
+      - "${MASTER_DB_PORT}:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${MASTER_DB_PASSWORD}
+    restart: unless-stopped
+
+  sqlserver-na:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-na
+    ports:
+      - "${NA_DB_PORT}:1436"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${NA_DB_PASSWORD}
+    restart: unless-stopped
+
+  sqlserver-eu:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver-eu
+    ports:
+      - "${EU_DB_PORT}:1435"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=${EU_DB_PASSWORD}
+    restart: unless-stopped

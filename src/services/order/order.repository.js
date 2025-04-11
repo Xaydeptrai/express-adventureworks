@@ -107,3 +107,34 @@ exports.fetchCustomerNames = async (server, customerIds) => {
   const result = await database.query(server, query, params);
   return result.recordset;
 };
+
+exports.fetchOrderDetail = async (server, orderId) => {
+  const query = `
+    SELECT 
+      sod.SalesOrderID,
+      sod.SalesOrderDetailID,
+      sod.ProductID,
+      p.Name AS ProductName,
+      sod.OrderQty,
+      sod.UnitPrice,
+      sod.UnitPriceDiscount,
+      sod.LineTotal
+    FROM Sales.SalesOrderDetail sod
+    INNER JOIN Production.Product p ON p.ProductID = sod.ProductID
+    WHERE sod.SalesOrderID = @orderId
+  `;
+
+  const params = {
+    orderId: { type: sql.Int, value: orderId },
+  };
+
+  const { result, timing } = await timedQuery(
+    `Fetch order details for ${orderId}`,
+    () => database.query(server, query, params)
+  );
+
+  return {
+    orderDetails: result.recordset,
+    timing,
+  };
+};

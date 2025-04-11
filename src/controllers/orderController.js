@@ -33,3 +33,14 @@ exports.getOrders = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getOrderDetail = async (req, res) => {
+  try {
+    const { server, orderId } = req.params;
+
+    const result = await orderService.getOrderDetail(server, parseInt(orderId));
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};

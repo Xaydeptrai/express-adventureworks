@@ -52,3 +52,12 @@ exports.getOrders = async (
     timing,
   };
 };
+
+exports.getOrderDetail = async (server, orderId) => {
+  const { orderDetails, timing } = await repo.fetchOrderDetail(server, orderId);
+
+  return {
+    data: orderDetails,
+    timing,
+  };
+};
