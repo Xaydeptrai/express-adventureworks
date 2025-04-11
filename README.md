@@ -62,6 +62,8 @@ EU	http://localhost:3000/api/eu/report/totalSalesByYear?year=2011
 Master	http://localhost:3000/api/master/report/totalSalesByYear?year=2011
 ```
 
+---
+
 🔧 Configuration
 | Service        | Host Port | Container Port |
 |----------------|-----------|----------------|
@@ -71,3 +73,15 @@ Master	http://localhost:3000/api/master/report/totalSalesByYear?year=2011
 | NA Server 2    | 3003      | 3003           |
 | EU Server 1    | 3004      | 3004           |
 | EU Server 2    | 3005      | 3005           |
+
+
+📚 API Endpoint List
+
+| Method | Endpoint                                                                       | Description                                           |
+|--------|--------------------------------------------------------------------------------|-------------------------------------------------------|
+| `GET`  | `/api/{region}/products?page=1&limit=5&search=`                                | Retrieve a paginated list of products (searchable)   |
+| `GET`  | `/api/{region}/order?page=1&limit=10&search=`                                  | Retrieve a paginated list of orders (searchable)     |
+| `GET`  | `/api/{region}/order/{orderId}`                                                | Retrieve the detailed information of a specific order |
+| `GET`  | `/api/{region}/report/bySubcategory?year=2011`                                 | Get total sales grouped by product subcategory       |
+| `GET`  | `/api/{region}/report/totalSalesByYear?year=2011`                              | Get total sales value by year                        |
+| `GET`  | `/api/{region}/reports/customersByRevenue?page=1&limit=5`                      | Retrieve top customers ranked by revenue             |
