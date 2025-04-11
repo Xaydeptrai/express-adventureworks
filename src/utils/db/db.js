@@ -5,12 +5,16 @@ const configs = require("../../config/db");
 class Database {
   constructor() {
     this.pools = new Map();
+    this.region = process.env.REGION || "na";
   }
 
   async init() {
-    for (const [region, config] of Object.entries(configs.getAll())) {
-      await this._createPool(region, config);
+    const config = configs.getAll()[this.region];
+    if (!config) {
+      throw new Error(`Config for region ${this.region} not found`);
     }
+    await this._createPool("master", configs.getAll()["master"]);
+    await this._createPool(this.region, config);
   }
 
   async _createPool(region, config) {

@@ -1,45 +1,76 @@
 version: "3.8"
 
 services:
-  master-db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: master-db
-    environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Password123@"
+  nginx:
+    image: nginx:alpine
     ports:
-      - "1533:1433"
+      - "3000:3000"
     volumes:
-      - ./backups:/var/opt/mssql/backup
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./logs:/var/log/nginx
     networks:
-      - mssql-net
+      - app-network
+    depends_on:
+      - master
+      - na_1
+      - na_2
+      - eu_1
+      - eu_2
 
-  eu-db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: eu-db
+  master:
+    build: .
     environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Password123@"
+      - REGION=master
+      - PORT=3001
+      - MASTER_DB_PORT=1533
     ports:
-      - "1535:1433"
-    volumes:
-      - ./backups:/var/opt/mssql/backup
+      - "3001:3001"
     networks:
-      - mssql-net
+      - app-network
 
-  na-db:
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    container_name: na-db
+  na_1:
+    build: .
     environment:
-      ACCEPT_EULA: "Y"
-      SA_PASSWORD: "Password123@"
-    ports:
-      - "1536:1433"
-    volumes:
-      - ./backups:/var/opt/mssql/backup
+      - REGION=na
+      - PORT=3002
+      - NA_DB_PORT=1535
+      - MASTER_DB_PORT=1533
     networks:
-      - mssql-net
+      - app-network
+
+  na_2:
+    build: .
+    environment:
+      - REGION=na
+      - PORT=3003
+      - NA_DB_PORT=1535
+      - MASTER_DB_PORT=1533
+    networks:
+      - app-network
+
+  eu_1:
+    build: .
+    environment:
+      - REGION=eu
+      - PORT=3004
+      - EU_DB_PORT=1536
+      - MASTER_DB_PORT=1533
+    networks:
+      - app-network
+
+  eu_2:
+    build: .
+    environment:
+      - REGION=eu
+      - PORT=3005
+      - EU_DB_PORT=1536
+      - MASTER_DB_PORT=1533
+    networks:
+      - app-network
 
 networks:
-  mssql-net:
+  app-network:
     driver: bridge
+
+volumes:
+  logs:

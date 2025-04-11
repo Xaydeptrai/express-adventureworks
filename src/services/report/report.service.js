@@ -34,7 +34,7 @@ exports.totalSalesBySubcategory = async (server = "master", year) => {
   };
 };
 
-exports.totalSalesByYearAndMonth = async (server = "na", year = null) => {
+exports.totalSalesByYearAndMonth = async (server = "master", year = null) => {
   const query = `
     SELECT 
       YEAR(soh.OrderDate) AS Year,
