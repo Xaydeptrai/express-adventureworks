@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  master-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: master-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123@"
+    ports:
+      - "1533:1433"
+    volumes:
+      - ./backups:/var/opt/mssql/backup
+    networks:
+      - mssql-net
+
+  eu-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: eu-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123@"
+    ports:
+      - "1535:1433"
+    volumes:
+      - ./backups:/var/opt/mssql/backup
+    networks:
+      - mssql-net
+
+  na-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: na-db
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123@"
+    ports:
+      - "1536:1433"
+    volumes:
+      - ./backups:/var/opt/mssql/backup
+    networks:
+      - mssql-net
+
+networks:
+  mssql-net:
+    driver: bridge
