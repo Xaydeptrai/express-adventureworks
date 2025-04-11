@@ -64,7 +64,7 @@ Master	http://localhost:3000/api/master/report/totalSalesByYear?year=2011
 
 ---
 
-### 🔧 Configuration
+## 🔧 Configuration
 | Service        | Host Port | Container Port |
 |----------------|-----------|----------------|
 | Nginx          | 3000      | 3000           |
@@ -75,7 +75,7 @@ Master	http://localhost:3000/api/master/report/totalSalesByYear?year=2011
 | EU Server 2    | 3005      | 3005           |
 
 
-### 📚 API Endpoint List
+## 📚 API Endpoint List
 
 | Method | Endpoint                                                                       | Description                                           |
 |--------|--------------------------------------------------------------------------------|-------------------------------------------------------|
