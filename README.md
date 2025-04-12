@@ -45,7 +45,7 @@ Repeat these steps for all 3 servers:
 1. Right-click Databases → Restore Database...
 2. Select Device → Add:
 ```swift
-/var/opt/mssql/backup/AdventureWorks2022.bak
+/var/opt/mssql/backup/{BackupDBFile}.bak
 ```
 3. In Files tab: Tick Relocate all files to folder
 4. Click OK to restore the database.
