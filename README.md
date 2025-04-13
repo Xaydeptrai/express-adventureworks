@@ -84,4 +84,4 @@ Master	http://localhost:3000/api/master/report/totalSalesByYear?year=2011
 | `GET`  | `/api/{region}/order/{orderId}`                                                | Retrieve the detailed information of a specific order |
 | `GET`  | `/api/{region}/report/bySubcategory?year=2011`                                 | Get total sales grouped by product subcategory       |
 | `GET`  | `/api/{region}/report/totalSalesByYear?year=2011`                              | Get total sales value by year                        |
-| `GET`  | `/api/{region}/reports/customersByRevenue?page=1&limit=5`                      | Retrieve top customers ranked by revenue             |
+| `GET`  | `/api/{region}/report/customersByRevenue?page=1&limit=5`                      | Retrieve top customers ranked by revenue             |
