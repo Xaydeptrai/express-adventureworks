@@ -32,8 +32,8 @@ docker-compose up -d
 🔌 Connect to MSSQL from SSMS
 ```bash
 localhost,1533 -- (master-db)
-localhost,1535 -- (eu-db)
-localhost,1536 -- (na-db)
+localhost,1535 -- (na-db)
+localhost,1536 -- (eu-db)
 ```
 🔑 Login 
   - Authentication: SQL Server Authentication
