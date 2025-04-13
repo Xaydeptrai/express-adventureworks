@@ -54,7 +54,6 @@ Repeat these steps for all 3 servers:
 Change the IP address in your configuration files:
   - Open the /src/config/db folder.
   - Find all the relevant files where the IP address is defined and update them with the new IP address.
-/src/config/db
 ```bash
 docker-compose up --build
 ```
