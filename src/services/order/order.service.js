@@ -61,3 +61,14 @@ exports.getOrderDetail = async (server, orderId) => {
     timing,
   };
 };
+
+exports.updateOrder = async (server, orderId, orderData) => {
+  try {
+    const result = await repo.updateOrder(server, orderId, orderData);
+    return result;
+  } catch (err) {
+    throw new Error(
+      `Cập nhật đơn hàng tại khu vực ${server} không thành công: ${err.message}`
+    );
+  }
+};

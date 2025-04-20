@@ -23,6 +23,11 @@ services:
       - REGION=master
       - PORT=3001
       - MASTER_DB_PORT=1533
+      - NA_DB_PORT=1535
+      - EU_DB_PORT=1536
+      - MASTER_DB_IP=
+      - NA_DB_IP=
+      - EU_DB_IP
     ports:
       - "3001:3001"
     networks:
@@ -35,6 +40,8 @@ services:
       - PORT=3002
       - NA_DB_PORT=1535
       - MASTER_DB_PORT=1533
+      - MASTER_DB_IP=
+      - NA_DB_IP=
     networks:
       - app-network
 
@@ -45,6 +52,8 @@ services:
       - PORT=3003
       - NA_DB_PORT=1535
       - MASTER_DB_PORT=1533
+      - MASTER_DB_IP=
+      - NA_DB_IP=
     networks:
       - app-network
 
@@ -55,6 +64,8 @@ services:
       - PORT=3004
       - EU_DB_PORT=1536
       - MASTER_DB_PORT=1533
+      - MASTER_DB_IP=
+      - EU_DB_IP
     networks:
       - app-network
 
@@ -65,6 +76,8 @@ services:
       - PORT=3005
       - EU_DB_PORT=1536
       - MASTER_DB_PORT=1533
+      - MASTER_DB_IP=
+      - EU_DB_IP
     networks:
       - app-network
 

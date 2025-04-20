@@ -15,6 +15,10 @@ class Database {
     }
     await this._createPool("master", configs.getAll()["master"]);
     await this._createPool(this.region, config);
+    if (this.region === "master") {
+      await this._createPool("eu", configs.getAll()["eu"]);
+      await this._createPool("na", configs.getAll()["na"]);
+    }
   }
 
   async _createPool(region, config) {

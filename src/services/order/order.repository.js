@@ -138,3 +138,20 @@ exports.fetchOrderDetail = async (server, orderId) => {
     timing,
   };
 };
+
+exports.updateOrder = async (server, orderId, orderData) => {
+  const query = `
+    UPDATE Sales.SalesOrderHeader
+    SET
+      Status = @Status
+    WHERE SalesOrderID = @SalesOrderID
+  `;
+
+  const params = {
+    SalesOrderID: { type: sql.Int, value: orderId },
+    Status: { type: sql.Int, value: orderData.Status },
+  };
+
+  const result = await database.query(server, query, params);
+  return result;
+};
